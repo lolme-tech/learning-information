@@ -1,4 +1,33 @@
-h1{
-    font-size:50px;
+html{
+    background-color:rgba(0, 255, 21, 0.418);
+}
+body { 
+    margin: 0px;
+    -webkit-text-size-adjust: 100%;
+ }
+.header{
+    height:100px;
+    background-color: white;
+    width:100%;
+}
+.profile{
+    padding-left:30px;
+    padding-right:30px;
+    color:#808080;
+    font-size:30px;
+
+}
+.profile:hover{
     color:red;
+}
+.head{
+    padding-top:30px;
+    padding-left:300px;
+    font-size:30px;
+}
+.twitter{
+    color:#00FFFF;
+}
+.insta{
+    color:pink;
 }
