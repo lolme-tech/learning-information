@@ -1,5 +1,9 @@
+a{
+    text-decoration:none;
+}
 html{
-    background-color:rgba(0, 255, 21, 0.418);
+    background-color:white;
+    height:2000px;
 }
 body { 
     margin: 0px;
@@ -11,8 +15,7 @@ body {
     width:100%;
 }
 .profile{
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:100px;
     color:#808080;
     font-size:30px;
 
@@ -22,12 +25,46 @@ body {
 }
 .head{
     padding-top:30px;
-    padding-left:300px;
+    padding-left:270px;
     font-size:30px;
 }
 .twitter{
     color:#00FFFF;
 }
 .insta{
-    color:pink;
+    color:#FF3366;
+}
+.photo1{
+    display:block;
+    width:100%;
+    padding-bottom:100px;
+}
+.main{
+    font-family:cursive;
+    position:absolute;
+    color:red;
+    padding-top:60px;
+    padding-left:40px;
+    font-size:30px;
+}
+.border{
+    padding-bottom:10px;
+    width:1300px;
+    font-size:40px;
+    color:black;
+    font-family:arial black;
+    border-bottom:solid 2px #EEEEEE;
+    position:relative;
+}
+.border2::after{
+    padding-bottom:10px;
+    content:"";
+    display:block;
+    border-bottom:solid 2px red;
+    position:absolute;
+    width:190px;
+}
+.topic{
+    padding-left:260px;
+    padding-bottom:30px;
 }
