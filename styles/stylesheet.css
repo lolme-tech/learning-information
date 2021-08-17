@@ -9,6 +9,8 @@ body {
     margin: 0px;
     -webkit-text-size-adjust: 100%;
  }
+ /*ここからパソコン用CSS*/
+ @media screen and (min-width:767px){
 .header{
     height:100px;
     background-color: white;
@@ -69,3 +71,4 @@ body {
 .portfolios{
     padding-left:260px;
 }
+ }
