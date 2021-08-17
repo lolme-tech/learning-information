@@ -4,6 +4,7 @@ a{
 html{
     background-color:white;
     height:2000px;
+    scroll-behavior: smooth;
 }
 body { 
     margin: 0px;
@@ -62,13 +63,80 @@ body {
     padding-left:260px;
     padding-bottom:30px;
 }
-.obniz{
+.partofportfolios{
     border:medium solid black;
     width:270px;
     height:280px;
-    
+}
+.partofportfolios:hover{
+    opacity: 0.7;
 }
 .portfolios{
     padding-left:260px;
+    padding-bottom:100px;
+}
+.learningtext{
+    padding-top:40px;
+    text-align:center;
+    font-family:Comic Sans MS;
+    font-size:35px;
+    color:black;
+}
+.learningtext:hover{
+    color:red;
+}
+.foottop{
+    border-top:medium solid #EEEEEE;
+    margin-top:300px;
+    height:100px;
+    background-color:red;
+    margin-bottom:80px;
+}
+#page_top{
+    padding-right:300px;
+    padding-top:25px;
+    width: 60px;
+    height: 60px;
+    right: 0;
+    bottom: 0;
+    color:white;
+    float:right;
+  }
+#page_top a{
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+  }
+#page_top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f139';
+    font-size: 50px;
+    color: white;
+  }
+.footer{
+    padding-top:80px;
+    padding-bottom:100px;
+    border-top:medium solid #EEEEEE;
+}
+.footerprofile{
+    margin-left:260px;
+    padding-left:20px;
+    font-size:25px;
+    border-left:solid 15px #EEEEEE;
+}
+.footerprofile:hover{
+    color:red;
+}
+.footerintro{
+    color:black;
 }
  }
+/*ここからタブレット用CSS*/
+@media screen and(max-width:767px){
+
+}
+/*ここからスマホ用CSS*/
+@media screen and(max-width:479px){
+
+}
