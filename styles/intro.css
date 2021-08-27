@@ -1,0 +1,24 @@
+a{
+    text-decoration:none;
+}
+html{
+    background-color:white;
+    height:2000px;
+    scroll-behavior: smooth;
+}
+body { 
+    margin: 0px;
+    -webkit-text-size-adjust: 100%;
+ }
+ /*ここからパソコン用CSS*/
+ @media screen and (min-width:767px){
+
+ }
+/*ここからタブレット用CSS*/
+@media screen and(max-width:767px){
+
+}
+/*ここからスマホ用CSS*/
+@media screen and(max-width:479px){
+
+}
