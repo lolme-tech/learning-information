@@ -6,13 +6,91 @@ html{
     height:2000px;
     scroll-behavior: smooth;
 }
+*{
+    margin:0px;
+    padding:0px;
+}
 body { 
     margin: 0px;
     -webkit-text-size-adjust: 100%;
  }
  /*ここからパソコン用CSS*/
  @media screen and (min-width:767px){
-
+.index{
+    padding-top:28px;
+    padding-left:100px;
+    color:white;
+    font-size:30px;
+}
+.index:hover{
+    color:red;
+}
+.header{
+    height:100px;
+    width:100%;
+    background-color:#808080;
+}
+.main{
+    padding-top:100px;
+    padding-left:50px;
+}
+.title{
+    color:black;
+    font-size:40px;
+}
+.maintext{
+    padding-top:30px;
+    font-size:25px;
+    color:#222222;
+    padding-bottom:60px;
+}
+.border{
+    padding-bottom:10px;
+    width:1300px;
+    font-size:40px;
+    color:black;
+    font-family:arial black;
+    border-bottom:solid 2px #EEEEEE;
+    position:relative;
+    margin-bottom:100px;
+}
+.border2::after{
+    padding-bottom:10px;
+    content:"";
+    display:block;
+    border-bottom:solid 2px red;
+    position:absolute;
+    width:190px;
+}
+.foottop{
+    border-top:medium solid #EEEEEE;
+    margin-top:40px;
+    height:100px;
+    background-color:red;
+    margin-bottom:80px;
+}
+#page_top{
+    padding-right:300px;
+    padding-top:25px;
+    width: 60px;
+    height: 60px;
+    right: 0;
+    bottom: 0;
+    color:white;
+    float:right;
+  }
+#page_top a{
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+  }
+#page_top a::before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f139';
+    font-size: 50px;
+    color: white;
+  }
  }
 /*ここからタブレット用CSS*/
 @media screen and(max-width:767px){
