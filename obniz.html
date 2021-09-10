@@ -3,15 +3,67 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Introduction</title>
-        <link rel="stylesheet" type="text/css" href="”https://lolme-tech.github.io/lerning-information/styles/stylesheet">
+        <title>Obniz</title>
+        <link rel="stylesheet" type="text/css" href="styles/obniz.css">
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-        <link rel=”stylesheet” href=”https://lolme-tech.github.io/lerning-information/stylesheet" type=”text/css”/>
+        <link rel="obniz" type="text/css" href="”https://lolme-tech.github.io/lerning-information/styles/obniz">
+        <link rel=”stylesheet” href=”https://lolme-tech.github.io/lerning-information/intro" type=”text/css”/>
+        <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <a href="index.html"><p class="head">HOME</p></a>
+        </div>
+        <div class="intro">
+            <h1 class="title">Obnizとは?</h1>
+            <p class="conpo">obnizとは、インターネット経由でプログラムを受信し、センサなどを制御するハードウェアです。
+                <br>プログラムはobnizHPのweb上で記述し、obniz固有のPINを入力してobnizを利用します。
+                <br>obnizをネットに繋げなければならないというデメリットがありますが、ラズパイのように
+                <br>起動時にOSの設定などを行ったりする必要がないので、とても便利です。</p>
+            <h1 class="title">Obnizでなにをしたか？</h1>
+            <p class="conpo">私は、授業の一環でこのobnizを使って4輪のラジコンを作成しました。
+                <br>操作をウェブ上で行うために、コントローラのUIを作成し、それぞれのUIに対応した制御をobnizにさせました。
+                <br>難点として、プログラミングのコードがHTMLのみに限られているので、1つのソースで4つの言語を混同させて記述しなければならないという点です。
+                <br>近年コロナウイルスの影響でリモートが主流になりつつあるために、ロボットを遠隔操作しようという趣旨のもと、
+                <br>この企画に携わらせていただくことになりました。
+                <br>このロボットは、オープンキャンパスの出し物として用い、ペットボトルのキャップをアームを使って回収し、
+                <br>ゴール地点に持っていくことを目的としています。
+            </p>
+            <img src="https://github.com/lolme-tech/learning-information/blob/master/photos/photo3.jpg?raw=true" class="photo2">
+            <p class="conpo">開発コンソールは上記のようになっており、web上で記述します。
+                <br>HTMLで記述したものは、<>内にstyleで指定してCSSを記述しました。
+                <br>java scriptの中にjqueryを記述し、html内のタグにてidで指定したものをjqueryで動きを与えます。
+            </p>
+            <img src="https://github.com/lolme-tech/learning-information/blob/master/photos/photo2.jpg?raw=true" class="photo3">
+            <p class="conpo">実行時は上記のようにロボットの進行先を決定する前後左右のボタンとロボットのアームを「開く」と「閉じる」のボタンが配置されています。
+                <br>ロボットの作成は、別の学科の方が作成してくださりました。
+                <br>キャンパスに来た人はObnizのPIN番号をスマホに入力し、先ほどのUI画面に遷移し、ロボットを動かします。
+                <br>参加者のロボット工学への熱意がこれを機に上がったのではないでしょうか？
+                <br>今後の課題としては、このロボットにカメラをつけ、完全にリモートで1人称カメラをみつつ操作できるようにすることです。
+            </p>
+        </div>
+        <div class="foottop"><div id="page_top"><a href="#"></a></div></div>
+        <script src="script.js"></script>
+    </body>
+</html>
+<!--
+    <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Obniz</title>
+        <link rel="stylesheet" type="text/css" href="styles/obniz.css">
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <link rel="obniz" type="text/css" href="”https://lolme-tech.github.io/lerning-information/styles/obniz">
+        <link rel=”stylesheet” href=”https://lolme-tech.github.io/lerning-information/intro" type=”text/css”/>
         <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
     </head>
     <body>
         <div>obnizページをここに作成します。
         </div>
+        <div class="foottop"><div id="page_top"><a href="#"></a></div></div>
         <script src="script.js"></script>
     </body>
 </html>
+-->
