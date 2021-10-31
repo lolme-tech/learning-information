@@ -17,6 +17,7 @@ body {
  /*ここからパソコン用CSS*/
  @media screen and (min-width:767px){
 .index{
+    display:inline-block;
     padding-top:28px;
     padding-left:100px;
     color:white;

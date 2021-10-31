@@ -67,6 +67,7 @@ body {
     border:medium solid black;
     width:270px;
     height:280px;
+    margin-right:10px;
 }
 .partofportfolios:hover{
     opacity: 0.7;
@@ -81,6 +82,27 @@ body {
     font-family:Comic Sans MS;
     font-size:35px;
     color:black;
+}
+.opa{
+    display:inline-block;
+    position:relative;
+}
+.opa:hover{
+    opacity:0.7;
+}
+.imgon{
+    position:absolute;
+    font-weight:bold;
+    text-align:center;
+    font-family:Comic Sans MS;
+    font-size:35px;
+    color:black;
+    top:0;
+    padding-left:50px;
+    padding-top:60px;
+}
+.portfolios p{
+    position:absolute;
 }
 .learningtext:hover{
     color:red;

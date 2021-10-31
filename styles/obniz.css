@@ -27,6 +27,7 @@ body {
   background-color:#808080;
 }
 .head{
+  display:inline-block;
   color:white;
   padding-top:30px;
   padding-left:100px;
