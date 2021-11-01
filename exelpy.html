@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Graduation thesis</title>
+        <link rel="stylesheet" type="text/css" href="styles/exelpy.css">
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <link rel="exelpy" type="text/css" href="”https://lolme-tech.github.io/lerning-information/styles/exelpy">
+        <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <a href="index.html" class="head">HOME</a>
+        </div>
+        <div class="body">
+            <h1 class="agenda">Pythonとエクセルを用いた家計簿プログラム</h1>
+            <h2 >作成の導入</h2>
+            <p class="desc">突然ですが、2021-11-01現在においてとても金欠です…<br>
+            そんな時皆さんは、どうしますか？<br>大抵の人は、節約すると思います。しますよね？（笑）<br>
+            そこで自分専用の家計簿ソフトを作ろうと思いました。自分が一カ月に何に対してどれくらい支出しているのか気になり、<br>
+            それをPythonとエクセルで可視化出来たらと思い、作成に至りました。</p>
+            <h2>設計書の作成</h2>
+            <p class="desc">プログラムを開発するにあたり、まずは設計書！ですよね。<br>
+            頭の中に作りたいものはある程度できていますが、もやもやしているので設計書で整理しました。
+            <br>設計書の作成には、wordを用います。自分しか見ないので、だいぶ適当です…<br>
+            まずは家計簿プログラムの状態遷移図を簡易的に作成しました。（図1）</p>
+            <img class="img1" src="https://github.com/lolme-tech/learning-information/blob/master/photos/joutaiseni.png?raw=true">
+            <p class="imgdesc">図1. 家計簿プログラムの状態遷移図</p>
+            <p class="desc">プログラムを起動したら、今日購入したジャンル（後に記述）を選択し、その購入金額を次の遷移で入力します。<br>
+            入力された金額はエクセルに対応した日付に格納されます。そうして格納していったエクセルのイメージ図を図2に示します。</p>
+            <img class="img2" src="https://github.com/lolme-tech/learning-information/blob/master/photos/graph1.png?raw=true">
+            <p class="imgdesc">図2. 家計簿プログラムによって格納されたエクセル内の値</p>
+            <p class="desc">合計の欄には各ジャンルの列の合計金額が格納されます。<br>
+                合計の行の6列目には合計の合計金額が格納され、その月に使用したすべての金額がわかるようになります。<br>
+                別のセルには、現時点の総資産が入り、その総資産から月の合計金額が引かれ、現状の資産を可視化します。 <br>
+                これをPythonで実装していきます。最初の遷移は、tkinterライブラリを使っていきます。</p>
+            <h2>Pythonによる実装</h2>
+
+
+        </div>
+        <div class="foottop"><div id="page_top"><a href="#"></a></div></div>
+        <script src="script.js"></script>
+    </body>
+</html>
+<!--
+    <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Graduation thesis</title>
+        <link rel="stylesheet" type="text/css" href="styles/graduation.css">
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <link rel="graduation" type="text/css" href="”https://lolme-tech.github.io/lerning-information/styles/graduation">
+        <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <a href="index.html" class="head">HOME</a>
+        </div>
+        <div class="foottop"><div id="page_top"><a href="#"></a></div></div>
+        <script src="script.js"></script>
+    </body>
+</html>
+-->
