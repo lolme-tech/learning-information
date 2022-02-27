@@ -1,7 +1,6 @@
-var $main=$('#main');
-$('#main').css("font-size","30px");
-$main.css("color","blue");
-$('.describe').css("font-size","20px");
+//var $main=$('#main');
+//$('#main').css("font-size","30px");
+//$main.css("color","blue");
 $(function(){
     $('.profile').hover(function(){
         $(this).html("工事中").css("color","red");
