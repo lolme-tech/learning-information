@@ -3,7 +3,7 @@ a{
 }
 html{
     background-color:white;
-    height:2000px;
+    
     scroll-behavior: smooth;
 }
 body { 
@@ -50,9 +50,26 @@ body {
         font-size:40px;
     }
     .photos{
-      height:800px;
-      width:40%;
+      height:400px;
+      width:20%;
       padding:60px 40px 60px 40px;
+    }
+    .photos1{
+      height:450px;
+      width:900px;
+      padding:60px 40px 60px 40px;
+    }
+    .photos2{
+      height:400px;
+      width:600px;
+      padding-top:60px;
+      padding-left:550px;
+      padding-bottom:60px;
+    }
+    .photos3{
+      padding-top:60px;
+      padding-left:200px;
+      padding-bottom:60px;
     }
     .body{
         padding-left:30px;
