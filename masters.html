@@ -29,6 +29,21 @@
                 <br>下記の画像は左が、今まで使用していた画像、右がその画像を白黒化した後の画像を表します。
                 
             </p>
+            <h1 class="agenda">RGBとグレイスケールLの画像情報量の違い</h1>
+            <h2 class="thesis">RGB</h2>
+            <p class="desc">フレームレートから抽出した画像は<br>
+            解像度(横×盾)1080×1920　画像モードがRGB<br>
+            配列の中身を適当に参照すると[139 142 147]となり、3bitで各bitの中に0～255の情報8bitが格納されている
+            <br>そのためRGBは1ピクセルで24bitの情報を扱う。(2^8*2^8*2^8=2^24)</p>
+            
+            <h2 class="thesis">グレイスケール</h2>
+            <p class="desc">フレームレートから抽出した画像は<br>
+            解像度(横×盾)1080×1920　画像モードがL<br>
+            配列の中身を適当に参照すると[ 80  80  80 ... 104 104 104]となり、1bitずつ横に格納されている。
+            <br>Lは白0から黒255の階調を示し、1bitの中に0～255の情報8bitが格納されている。
+            <br>そのためLは1ピクセルで8bitの情報を扱う。(2^8)</p>
+
+
             <h1 class="agenda">参照論文(分からなかった単語のメモ）</h1>
             <h2 class="thesis">Vicki Bruce and Andy young,"Understanding face recognition",1986</h2>
             <p class="desc">functional=機能的　resemblance=類似的　neurological=神経学的　bibliography=書誌
