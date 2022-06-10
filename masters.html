@@ -14,7 +14,7 @@
             <a href="index.html" class="head">HOME</a>
         </div>
         <div class="body">
-            <h1 class="agenda">修士論文(2022年4月26日更新)</h1>
+            <h1 class="agenda">修士論文(2022年6月9日更新)</h1>
             <p class="desc">前回の学部での卒業論文では、人工知能を用いた手の形状による個人認証に関する研究をしました。
                 <br>結果として、人工知能を用いれば個人の認証を可能とし、本人拒否率を非常に低くすることができるということが
                 <br>わかりました。しかし、他人受入率が非常に高いことが課題点としてあげられました。
@@ -24,12 +24,11 @@
             <p class="desc">卒業論文では、手の画像を解像度は可変させたものの、画像自体のカラーは撮影したものを
                 <br>そのまま使用していました。そこで、手の画像を白と黒の2値だけにし、影や背景の色に影響を
                 <br>受けにくくすることで、他人受入率及び本人拒否率を低くすることができるのではないかと考えました。
-                <br>手法としては、機械学習に与えるnumpy形式のファイルに画像群を与える前に、画像群すべてを
-                <br>openCVにて白黒化します。
-                <br>下記の画像は左が、今まで使用していた画像、右がその画像を白黒化した後の画像を表します。
-                
+                <br>その研究の細かい調査結果などを下にメモとして残していきます。
             </p>
-            <h1 class="agenda">RGBとグレイスケールLの画像情報量の違い</h1>
+
+            
+            <h1 class="agenda">RGBとグレイスケールL及びバイナリの画像情報量の違い</h1>
             <h2 class="thesis">RGB</h2>
             <p class="desc">フレームレートから抽出した画像は<br>
             解像度(横×盾)1080×1920　画像モードがRGB<br>
@@ -38,11 +37,111 @@
             
             <h2 class="thesis">グレイスケール</h2>
             <p class="desc">フレームレートから抽出した画像は<br>
-            解像度(横×盾)1080×1920　画像モードがL<br>
+            解像度(横×縦)1080×1920　画像モードがL<br>
             配列の中身を適当に参照すると[ 80  80  80 ... 104 104 104]となり、1bitずつ横に格納されている。
             <br>Lは白0から黒255の階調を示し、1bitの中に0～255の情報8bitが格納されている。
             <br>そのためLは1ピクセルで8bitの情報を扱う。(2^8)</p>
-
+            <br>
+            <h1 class="agenda">numpyファイルに格納した画像と格納する前の画像の比較</h1>
+            <p class="desc">今回は、RGBからグレイスケール画像を作成しました。<br>
+            グレイスケールへ変換するコードは</p>
+            <pre><code class="coding">
+                img_gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+            </code></pre>
+            <p class="desc">となります。
+                <br>サイズは(横×縦)1080×1920から128×128ピクセルへと変換します。<br>
+                さらに、その画像をnpz形式のデータファイルに格納します。
+                <br>下記にそのファイルの中身を示します。
+                <br>
+                <br>ラベル0　Aさんの表の手の画像約150枚
+                <br>ラベル1　Aさんの表の手の画像約150枚
+                <br>ラベル2　Bさんの表の手の画像約150枚
+                <br>ラベル3　Bさんの裏の手の画像約150枚
+                <br>
+                <br>のように格納されています。
+                <br>【処理前RGB画像】1080×1920　1ピクセル24bit
+                <br>【処理後GRAY画像】128×128　1ピクセル8bit
+                <br>
+                <br>下記の画像は左が、処理前のRGB画像、右が処理後のグレイスケール画像を表します。
+                <br><img src="https://github.com/lolme-tech/learning-information/blob/master/photos/22.jpg?raw=true" class="photos">
+                <img src="https://github.com/lolme-tech/learning-information/blob/master/photos/extract.jpg?raw=true" class="photos1">
+            </p>
+            <h2 class="thesis">バイナリー値</h2>
+            <p class="desc">バイナリー値に変換するには、RGB画像をグレイスケールにした後、<br>
+            </p>
+                <pre><code class="coding">
+                    ret, bi_img = cv2.threshold(img3, 127, 255, cv2.THRESH_BINARY)
+                </code></pre>
+            <p class="desc">
+                を用いてバイナリー化します。引数の127と255が閾値となり、
+                <br>127以下の色であれば0
+                <br>それ以外は255
+                <br>になる。先のグレイスケールの例で例えると、
+                <br>[ 80  80  80 ... 104 104 104](グレイスケールの配列)
+                <br>[  0   0   0 ...   0   0   0](バイナリ値の配列)
+                <br>(0=黒、255=白)
+                <br>よってバイナリ化された配列の中身は0または255のみとなる。
+                <br>解像度(横×縦)1080×1920　画像モードがL
+                <br>白255と黒0のみを扱うが、255は1000,0000なので8bit必要となるため、
+                <br>1ピクセルで8bitの情報を扱う。(2^8)
+                <br>下記にRGB、グレイスケール、バイナリを表します。
+                <br><img src="https://github.com/lolme-tech/learning-information/blob/master/photos/22.jpg?raw=true" class="photos">
+                <img src="https://github.com/lolme-tech/learning-information/blob/master/photos/extract.jpg?raw=true" class="photos1">
+                <img src="https://github.com/lolme-tech/learning-information/blob/master/photos/binary.jpg?raw=true" class="photos1">
+            </p>
+            <h1 class="agenda">CNNのモデル</h1>
+            <pre><code class="coding">
+                def def_model(in_shape, nb_classes):
+                model = Sequential()
+                model.add(Conv2D(32,#畳み込み
+                          kernel_size=(3, 3),
+                          activation='relu',
+                          input_shape=in_shape))
+                model.add(Conv2D(32, (3, 3), activation='relu'))#畳み込み
+                model.add(MaxPooling2D(pool_size=(2, 2)))#プーリング
+                model.add(Dropout(0.25))#ドロップアウト
+            
+                model.add(Conv2D(64, (3, 3), activation='relu'))#畳み込み
+                model.add(Conv2D(64, (3, 3), activation='relu'))#畳み込み
+                model.add(MaxPooling2D(pool_size=(2, 2)))#プーリング
+                model.add(Dropout(0.25))#ドロップアウト
+            
+                model.add(Flatten())#平滑化
+                model.add(Dense(512, activation='relu'))#畳み込み
+                model.add(Dropout(0.5))#ドロップアウト
+                model.add(Dense(nb_classes, activation='softmax'))#畳み込み
+                return model
+            </code></pre>
+            <h2 class="thesis">CNNのモデルの構造</h2>
+            <p class="desc">
+                モデルの構造は<br>
+                ・畳み込み<br>
+                ・畳み込み<br>
+                ・プーリング<br>
+                ・ドロップアウト<br>
+                ・畳み込み<br>
+                ・畳み込み<br>
+                ・プーリング<br>
+                ・ドロップアウト<br>
+                ・平滑化<br>
+                ・畳み込み<br>
+                ・ドロップアウト<br>
+                ・畳み込み<br>
+                を繰り返すことで画像認識を実現している。<br>
+                このモデルは画像認識コンテスト「ILSVRC-2014」で優秀な成績を収めたVGGの<br>
+                チームが利用したモデルに似ているので、VGGlikeと呼ばれています。<br>
+                今回はそのVGGlikeを利用しています。
+            </p>
+            <pre><code class="coding">
+                pre=model.predict([x])[0]#画像の予測
+                idx=pre.argmax()
+                per=(pre[idx]*100)
+                return(idx,per)
+            </code></pre>
+            <p class="desc">
+                predictで予測を行い、argmax()関数で予測結果の配列から一番大きいかを取り出してくれます。<br>
+                その値が、予測値、いわゆる可能性を表します。
+            </p>
 
             <h1 class="agenda">参照論文(分からなかった単語のメモ）</h1>
             <h2 class="thesis">Vicki Bruce and Andy young,"Understanding face recognition",1986</h2>
