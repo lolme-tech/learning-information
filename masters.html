@@ -82,12 +82,42 @@
                 <br>(0=黒、255=白)
                 <br>よってバイナリ化された配列の中身は0または255のみとなる。
                 <br>解像度(横×縦)1080×1920　画像モードがL
-                <br>白255と黒0のみを扱うが、255は1000,0000なので8bit必要となるため、
+                <br>白255と黒0のみを扱うが、255は1000,0000なので8bit(1byte)必要となるため、
                 <br>1ピクセルで8bitの情報を扱う。(2^8)
                 <br>下記にRGB、グレイスケール、バイナリを表します。
                 <br><img src="https://github.com/lolme-tech/learning-information/blob/master/photos/22.jpg?raw=true" class="photos">
                 <img src="https://github.com/lolme-tech/learning-information/blob/master/photos/extract.jpg?raw=true" class="photos1">
                 <img src="https://github.com/lolme-tech/learning-information/blob/master/photos/binary.jpg?raw=true" class="photos1">
+            </p>
+            <h2 class="thesis">エッジ検出</h2>
+            <p desc="desc">
+                エッジ検出のアルゴリズムにおいてラプラシアンフィルタを用います。
+                <br>x方向とy方向の2次微分の和をラプラ試案と呼ぶ。
+                <br>しかし、2次微分はノイズも検出してしまうのでこのノイズを抑制するために
+                <br>ガウシアンブラｰ(平滑化/ぼかし)を用います。
+                <br>[[100 , 150 , 140 , 140],
+                <br>[140 , 130 , 110 , 160],
+                <br>[130 , 140 , 130 , 130]]
+                <br>の時、注目画像を(1,1)=110とすると周りの9画素の中で、注目画像を中心とした
+                <br>ガウス分布(正規分布)に従って重み付き平均の計算を行う。
+                <br>この場合、4×3のx軸y軸を計算する。
+                <br>
+                <br>ラプラシアンフィルタにはカーネルがあり、例えば
+                <br>3×3の
+                <br>[[0 , -1 , 0],
+                <br>[-1 , 8 , -1],
+                <br>[0 , -1 , 0]]
+                <br>というカーネルを用意する。
+                <br>この時、入力画像の一部が
+                <br>[[3 , 6 , 10],
+                <br>[8 , 6 , 2],
+                <br>[9 , 4 , 1]]
+                <br>だとするとそれぞれかけたものを足した値を注目画像(1,2)に代入していく。
+                <br>つまりこの場合
+                <br>0×3＋-1×6＋0×10＋8×-1＋6×8＋-1×-1＋0×9＋-1×4＋0×1=29
+                <br>が6の位置に代入される。これを各ピクセルでカーネルに従い行っていく。
+                <img src="https://github.com/lolme-tech/learning-information/blob/master/photos/edges.jpg?raw=true" class="photos">
+                
             </p>
             <h1 class="agenda">CNNのモデル</h1>
             <pre><code class="coding">
@@ -128,6 +158,8 @@
                 ・ドロップアウト<br>
                 ・畳み込み<br>
                 を繰り返すことで画像認識を実現している。<br>
+                一般的に畳み込み、プーリング、平滑化を層としてカウントするので、<br>
+                今回のモデルは9層となります。<br>
                 このモデルは画像認識コンテスト「ILSVRC-2014」で優秀な成績を収めたVGGの<br>
                 チームが利用したモデルに似ているので、VGGlikeと呼ばれています。<br>
                 今回はそのVGGlikeを利用しています。
