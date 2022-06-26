@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Graduation thesis</title>
+        <title>Google App Script</title>
         <link rel="stylesheet" type="text/css" href="styles/exelpy.css">
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         <link rel="exelpy" type="text/css" href="”https://lolme-tech.github.io/lerning-information/styles/exelpy">
@@ -14,28 +14,54 @@
             <a href="index.html" class="head">HOME</a>
         </div>
         <div class="body">
-            <h1 class="agenda">Pythonとエクセルを用いた家計簿プログラム</h1>
+            <h1 class="agenda">GoogleAppScriptによる家計簿そふと</h1>
             <h2 >作成の導入</h2>
             <p class="desc">突然ですが、2021-11-01現在においてとても金欠です…<br>
-            そんな時皆さんは、どうしますか？<br>大抵の人は、節約すると思います。しますよね？（笑）<br>
             そこで自分専用の家計簿ソフトを作ろうと思いました。自分が一カ月に何に対してどれくらい支出しているのか気になり、<br>
-            それをPythonとエクセルで可視化出来たらと思い、作成に至りました。</p>
-            <h2>設計書の作成</h2>
-            <p class="desc">プログラムを開発するにあたり、まずは設計書！ですよね。<br>
-            頭の中に作りたいものはある程度できていますが、もやもやしているので設計書で整理しました。
-            <br>設計書の作成には、wordを用います。自分しか見ないので、だいぶ適当です…<br>
-            まずは家計簿プログラムの状態遷移図を簡易的に作成しました。（図1）</p>
-            <img class="img1" src="https://github.com/lolme-tech/learning-information/blob/master/photos/joutaiseni.png?raw=true">
-            <p class="imgdesc">図1. 家計簿プログラムの状態遷移図</p>
-            <p class="desc">プログラムを起動したら、今日購入したジャンル（後に記述）を選択し、その購入金額を次の遷移で入力します。<br>
-            入力された金額はエクセルに対応した日付に格納されます。そうして格納していったエクセルのイメージ図を図2に示します。</p>
-            <img class="img2" src="https://github.com/lolme-tech/learning-information/blob/master/photos/graph1.png?raw=true">
-            <p class="imgdesc">図2. 家計簿プログラムによって格納されたエクセル内の値</p>
-            <p class="desc">合計の欄には各ジャンルの列の合計金額が格納されます。<br>
-                合計の行の6列目には合計の合計金額が格納され、その月に使用したすべての金額がわかるようになります。<br>
-                別のセルには、現時点の総資産が入り、その総資産から月の合計金額が引かれ、現状の資産を可視化します。 <br>
-                これをPythonで実装していきます。最初の遷移は、tkinterライブラリを使っていきます。</p>
-            <h2>Pythonによる実装</h2>
+            それをGoogleAppScriptで可視化出来たらと思い、作成に至りました。</p>
+            <h2>目的</h2>
+            <p class="desc">目的としてGoogleフォームにて使った金額を入力し送信します。<br>
+            そして送信されるとともに、Googleスプレッドシート上で使っていい金額を表示します。
+            <br>奨学金を借りていたり、数枚あるクレジットカードで差し引かれた後の金額を知りたいというのが目的になります。<br>
+            当然、銀行に入った収益なども加算されていくようにします。</p>
+            <img class="img2" src="https://github.com/lolme-tech/learning-information/blob/master/photos/photo23.png?raw=true">
+            <p class="imgdesc">図1. Googleフォームの質問項目</p>
+            <p class="desc">「決済手段」が銀行の残高から今後差し引かれるお金を入力します。<br>
+            「入金の種類」が銀行に加算される収益を表します。(お小遣いやアルバイトなどでの収益)
+            <br>「使った金額」「入金」項目にそれに対応する金額を入力します。
+            <br>例えば、決済手段➢クレジットカード　使った金額➢3000だとしたら、スプレッドシートの
+            <br>銀行の残高から3000円がひかれ、使っていい金額を表示してくれます。
+            </p>
+            <h2>Googleフォームとプログラムの仕組み</h2>
+            <p class="desc">プログラムの全体は私のGithubに載せてありますが、一部抜粋して説明していきます。<br>
+                googleフォームは送信したときにタイムスタンプとともに入力項目を配列として返します。<br>
+                例えば、図1でいう決済手段、使った金額、入金の種類、入金は[0,1,2,3]という配列になっているので、 <br>
+                決済手段にて現金を選択した場合、返す値はvalue[0]="現金"となります。
+            <br>この返ってきた値によって分岐条件を行ってスプレッドシートを操作していきます。
+            <br>またGoogleフォームは送信したときをトリガーにしてプログラムを起動してくれる機能があります。
+            <br>そのため、フォーム送信するごとにスプレッドシートも動的に変更されるようになっています。
+            </p>
+            <h2>スプレッドシートを操作するプログラム</h2>
+            <p class="desc">スプレッドシートは行列単位で値が格納されています。<br>
+                そのため、まずは操作したい行列番号(セル)を指定します。<br>
+                var wallet=sheet.getRange(7,8).getValue();<br>
+                というプログラムで変数walletに7行8列のセルに入っている値を取得します。<br>
+                sheet.getRange(7,8).setValue(wallet);<br>
+                を使うことで7行8列のセルにwalletという変数の値を格納できます。<br>
+                私の家計簿では、基本的にこの2つを使って実装しています。
+            </p>
+            <h2>実装例</h2>
+            <p class="desc">
+                先ほどの例にならって決済手段➢クレジットカード　使った金額➢3000だとします。
+                <br>もしvalue[0]="クレジットカード"であれば、クレジットカードの合計金額のセルを
+                <br>取得してvalue[1]="3000"を加算します。その加算した値を再びクレジットカードの
+                <br>合計金額のセルに格納します。
+                <br>次に使っていい金額が格納されているセルを取得して、その金額から
+                <br>クレジットカードで使った3000をひきます。その引いた金額を再び使っていい金額の
+                <br>セルに格納します。これでクレジットカードのセルは加算され、使っていい金額のセルは
+                <br>減算された状態になります。
+            </p>
+
 
 
         </div>
