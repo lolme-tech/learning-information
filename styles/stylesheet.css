@@ -70,6 +70,15 @@ body {
     width:270px;
     height:280px;
     margin-right:10px;
+    display:inline-block;
+}
+.competitive{
+    padding-left:30px;
+    padding-top:20px;
+    text-align:center;
+    font-family:Comic Sans MS;
+    font-size:35px;
+    color:black;
 }
 .partofportfolios:hover{
     opacity: 0.7;
