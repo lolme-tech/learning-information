@@ -35,10 +35,16 @@ body {
         color:black;
         padding-top:20px;
     }
+    .meidai{
+        font-family:SimSun;
+        font-size:30px;
+        color:black;
+        padding-top:20px;
+    }
     .desc{
         font-family:ＭＳ 明朝;
         line-height:50px;
-        padding-top:20px;
+        padding-top:10px;
         font-size:30px;
         color:black;
     }
@@ -51,6 +57,11 @@ body {
       height:100px;
       background-color:red;
       margin-bottom:80px;
+  }
+   .opa{
+      display:inline-block;
+      position:relative;
+      font-size:30px;
   }
    #page_top{
       padding-right:300px;
